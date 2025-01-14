@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 /** 
  * author: Vithushine
@@ -28,14 +27,3 @@ class Task {
     }
 }
 
-class TaskApp { 
-    public static void main(String[] args) { 
-        Scanner scanner = new Scanner(System.in); 
-        System.out.println("Hello, Create Your To Do List Today!");
-        
-        
-    }
-}
-    
-
-    
