@@ -10,7 +10,7 @@ import java.util.LinkedList;
  */
 
 class TaskManager {
-    private ArrayList<Task> tasks; // List to store tasks
+    ArrayList<Task> tasks; // List to store tasks
     private LinkedList<Task> taskQueue; // Queue to keep the tasks in order of when they are added
 
     public TaskManager() { // Initializes the task list and queue
@@ -18,12 +18,17 @@ class TaskManager {
         this.taskQueue = new LinkedList<>();
     }
     
+    /**
+     * Adds a new task with description and deadline
+     * @param description Task description
+     * @param deadlineInput Task deadline as a string in the MM-dd-yyyy format
+     */
     public void addTask(String description, String deadlineInput) { // Adds a new task with a description and deadline
         Date deadline = null; // Sets the deadline to null because no date is given by the user yet
         if (!deadlineInput.isEmpty()) { // Checks if user gave a deadline
             try { // This might cause errors but this helps the program not crash
                 // Trys to convert the deadline the user inputted into a date object
-                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");  
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
                 deadline = sdf.parse(deadlineInput); 
             } catch (Exception error) { // Helps program not to crash and inform the user what went wrong
                 System.out.println("No deadline set because of error in date format.");
@@ -36,6 +41,10 @@ class TaskManager {
         System.out.println("Task added successfully!");
     }
 
+    /**
+     * Marks a task as completed
+     * @param taskNumber Number of the task to mark as completed
+     */
     public void markTaskAsCompleted(int taskNumber) { // Marks a test based on the number the user picks
         // Checks if the task number is valid by seeing if it is greater than 0 and less than or equal to the total number of tasks
         if (taskNumber > 0 && taskNumber <= tasks.size()) { 
@@ -73,6 +82,10 @@ class TaskManager {
         }
     }
     
+    /**
+     * Returns the amount of tasks in the list
+     * @return Number of tasks
+     */
     public int getTaskCount() { // Gets the total number of tasks
         return tasks.size(); // Returns the size of the task list
     }

@@ -3,49 +3,77 @@ import java.util.*;
 
 /** 
  * author: Vithushine
- * date: 01/09/2025
- * To Do List Maker
+ * date: 01/17/2025
+ * Tracks the status of the task
  */
-
 class BaseTask { 
-    private String description; 
+    private String description; // Stores the description of the task
+    
+    /**
+     * Constructor for BaseTask
+     * @param description The description of the task 
+     */
     public BaseTask(String description) { 
-        this.description = description;
+        this.description = description; 
     }
 
+    /**
+     * Get the description of the task
+     * @return Task description
+     */
     public String getDescription() { 
         return description; 
     }
 }
+class Task extends BaseTask { // extends from the BaseTask class
+    private boolean completed; // Tracks if the task is completed or not using true/false
+    private Date deadline; // Stores the task's deadline
 
-class Task extends BaseTask {
-    private boolean completed; 
-    private Date deadline;
-
-    public Task(String description, Date deadline) { 
-        super(description); // calls the BaseTask constructor
-        this.completed = false; // every task that is inputted will start as not completed
-        this.deadline = deadline;
+    /**
+     * Constructor for Task
+     * @param description Description of task
+     * @param deadline Deadline for the task
+     */
+    public Task(String description, Date deadline) { // Creates task with a description and deadline
+        super(description); // Calls the BaseTask constructor to set the description
+        this.completed = false; // Every task that is inputted will start as not completed
+        this.deadline = deadline; 
     }
 
-    public boolean isCompleted() { 
-        return completed; 
+    /**
+     * Checks if task is completed
+     * @return True if task is completed, false if not completed
+     */
+    public boolean isCompleted() { // Checks if the task is completed 
+        return completed; // Returns whether the task is completed (true) or incomplete (false)
     }
 
+    /**
+     * Mark the task as completed
+     */
     public void markAsCompleted() {
-        this.completed = true; 
+        this.completed = true; // Changes the task to completed
     }
 
-    public Date getDeadline() { 
+    /**
+     * Get the deadline of the task
+     *
+     * @return Task deadline as a Date object
+     */
+    public Date getDeadline() { // Gets the dealine and returns it
         return deadline;
     }
 
+    /**
+     * Gets a string representation of the task with its description, status and deadline
+     * @return String with the details of the task
+     */
     @Override
     public String toString() { 
-        SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy"); 
-        String status = completed ? "Completed" : "Not Completed";
-        String deadlineStr = (deadline != null) ? sdf.format(deadline) : "No deadline";
-        return status + " - " + getDescription() + " (Deadline: " + deadlineStr + ")";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // Print the date in MM/dd/yyyy format
+        String status = completed ? "Completed" : "Not Completed"; // If task is completed then sets it to "Completed" and if not then sets it to "Not Completed"
+        String deadlineStr = (deadline != null) ? sdf.format(deadline) : "No deadline"; // Sets deadline if given, or sets it to "No deadline" when there is no deadline
+        return status + " - " + getDescription() + " (Deadline: " + deadlineStr + ")"; // Returns message with the task's status, description, and deadline 
     }
 }
 
