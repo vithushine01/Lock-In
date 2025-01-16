@@ -1,10 +1,11 @@
 import java.util.Scanner;
-import java.text.SimpleDateFormat;
+
 /** 
  * author: Vithushine
- * date: 01/09/2025
- * To Do List Maker
+ * date: 01/17/2025
+ * Task application where users can add tasks, mark them as completed, view them, and more!
  */
+
 class TaskApp { 
     public static void main(String[] args) { 
         Scanner scanner = new Scanner(System.in); 
