@@ -15,6 +15,7 @@ class TaskApp {
         System.out.println("Hello, Create Your To Do List Today!");
         
         while (running) { // Loops these messages till the user chooses to exit the program
+            System.out.println("Options:");
             System.out.println("1. Add a task");
             System.out.println("2. Mark a task as completed");
             System.out.println("3. View all tasks");

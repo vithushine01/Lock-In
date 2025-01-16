@@ -2,6 +2,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 /** 
  * author: Vithushine
@@ -10,7 +11,7 @@ import java.util.LinkedList;
  */
 
 class TaskManager {
-    ArrayList<Task> tasks; // List to store tasks
+    private ArrayList<Task> tasks; // List to store tasks
     private LinkedList<Task> taskQueue; // Queue to keep the tasks in order of when they are added
 
     public TaskManager() { // Initializes the task list and queue
@@ -56,7 +57,7 @@ class TaskManager {
             }
         }
     
-    public void viewTasks() { // Views all tasks in the list
+    public List<Task> viewTasks() { // Views all tasks in the list
         if (tasks.isEmpty()) { // Checks if there are any tasks in the list
             System.out.println("No tasks have been added yet");
         } else { 
@@ -66,9 +67,10 @@ class TaskManager {
                 System.out.println((i+1) + ". " + tasks.get(i)); // Prints out task and task number 
             }
         }
+        return tasks; // returns the list of tasks
     }
     
-    public void displayNextTaskInQueue() { // Prints the next incomplete task in the queue
+    public Task displayNextTaskInQueue() { // Prints the next incomplete task in the queue
         // While the queue isn't empty and the first task is completed, remove it from the queue
         while (!taskQueue.isEmpty() && taskQueue.peek().isCompleted()) { 
             taskQueue.poll(); 
@@ -76,9 +78,11 @@ class TaskManager {
 
         if (taskQueue.isEmpty()) { // Checks if the queue is empty
             System.out.println("No tasks in the queue.");
+            return null;
         } else {
             // Prints the next task in the queue without removing it, only for viewing
             System.out.println("Next task in queue: " + taskQueue.peek()); 
+            return taskQueue.peek();
         }
     }
     
@@ -89,5 +93,5 @@ class TaskManager {
     public int getTaskCount() { // Gets the total number of tasks
         return tasks.size(); // Returns the size of the task list
     }
-
+   
 }
