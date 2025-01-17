@@ -10,7 +10,7 @@ import java.util.List;
  * Manages and organizes the tasks
  */
 
-class TaskManager {
+public class TaskManager {
     private ArrayList<Task> tasks; // List to store tasks
     private LinkedList<Task> taskQueue; // Queue to keep the tasks in order of when they are added
 

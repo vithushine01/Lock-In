@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Task application where users can add tasks, mark them as completed, view them, and more!
  */
 
-class TaskApp { 
+public class TaskApp { 
     public static void main(String[] args) { 
         Scanner scanner = new Scanner(System.in); // Allows for program to read user's input
         TaskManager taskManager = new TaskManager(); // Calls the TaskManager class and allows to use the methods in there

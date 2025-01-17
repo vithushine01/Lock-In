@@ -6,26 +6,8 @@ import java.util.*;
  * date: 01/17/2025
  * Tracks the status of the task
  */
-class BaseTask { 
-    private String description; // Stores the description of the task
-    
-    /**
-     * Constructor for BaseTask
-     * @param description The description of the task 
-     */
-    public BaseTask(String description) { 
-        this.description = description; 
-    }
 
-    /**
-     * Get the description of the task
-     * @return Task description
-     */
-    public String getDescription() { 
-        return description; 
-    }
-}
-class Task extends BaseTask { // extends from the BaseTask class
+public class Task extends BaseTask { // extends from the BaseTask class
     private boolean completed; // Tracks if the task is completed or not using true/false
     private Date deadline; // Stores the task's deadline
 
