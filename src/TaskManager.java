@@ -27,6 +27,7 @@ class TaskManager {
     public void addTask(String description, String deadlineInput) { // Adds a new task with a description and deadline
         Date deadline = null; // Sets the deadline to null because no date is given by the user yet
         if (!deadlineInput.isEmpty()) { // Checks if user gave a deadline
+           // I used ChatGPT to help me in this section of code because I was having difficulties in changing the deadline the user inputs into a date object so it suggested using a try and catch block ecause it helps with errors without the program crashing
             try { // This might cause errors but this helps the program not crash
                 // Trys to convert the deadline the user inputted into a date object
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
@@ -57,6 +58,10 @@ class TaskManager {
             }
         }
     
+    /**
+     * Views all tasks in the list
+     * @return The list of all the tasks in the list and if the list is empty then it prints a message to a user
+     */
     public List<Task> viewTasks() { // Views all tasks in the list
         if (tasks.isEmpty()) { // Checks if there are any tasks in the list
             System.out.println("No tasks have been added yet");
@@ -69,7 +74,11 @@ class TaskManager {
         }
         return tasks; // returns the list of tasks
     }
-    
+
+    /**
+     * Displays the next incomplete task in the queue
+     * @return The next incomplete task, and if all tasks are completed then a message will be given and returns null
+     */
     public Task displayNextTaskInQueue() { // Prints the next incomplete task in the queue
         // While the queue isn't empty and the first task is completed, remove it from the queue
         while (!taskQueue.isEmpty() && taskQueue.peek().isCompleted()) { 
